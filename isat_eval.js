@@ -1,4 +1,4 @@
-    function isat_eval(input) {
+export function isat_eval(input) {
 
      var pass1=10;
      var pass3={value:3};
@@ -84,7 +84,7 @@ try {
  
 var value= left_float_test ?  var_fn_result ? this[isat_var](isat_fn) : this[input] :input; 
 } catch (error) {
-  console.log(error);
+ 
   
 }
 
@@ -108,6 +108,8 @@ for (var i = 0, n = f.ooo.length; i < n; i++) {
     // var re = new RegExp('(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\\' + f.ooo[i].join('\\') + '])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)');
     var re = new RegExp('(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\\' + f.ooo[i].join('\\') + '])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)');
  
+  // Regular Expression to look for operators between floating numbers or integers
+//   var re = new RegExp('(\[a-zA-Z0-9]+|\[0-9]+\\.?\\d*)([\\'+ f.ooo[i].join('\\') + '])(\[a-zA-Z0-9]+|\[0-9]+\\.?\\d*)');
 
   re.lastIndex = 0; // take precautions and reset re starting pos
 
@@ -141,9 +143,18 @@ console.log("isat_var_l"+isat_var_l);
 console.log(RegExp.$2.replace('(','').replace(')',''));
 
 
+// var value= left_float_test ?  this[input] :input;
+
+// var value= left_float_test ?  var_fn_result ? this[isat_var](isat_fn) : this[input] :input;
+try {
+  var left_float_value_format= left_float_test ?   var_fn_result_l ? this[isat_var_l](isat_fn_l) : this[left_float_variable] :left_float_variable;
+  
+} catch (error) {
+  
+}
 
 // var isat_var_l=RegExp.$1;
-var left_float_value_format= left_float_test ?   var_fn_result_l ? this[isat_var_l](isat_fn_l) : this[left_float_variable] :left_float_variable;
+
 console.log("left_float_value"+left_float_value_format);
 console.log("note"+left_float_variable);
 // typeof
@@ -166,10 +177,25 @@ var isat_fn_r=RegExp.$2.replace('(','').replace(')','');
 console.log("isat_var_r"+RegExp.$1);
 
 console.log("isat_fn_r"+RegExp.$2);
-
+// /[\(\)]/g
 console.log(RegExp.$2.replace('(','').replace(')',''));
+try {
+ 
 var right_float_value_format=right_float_test ?  var_fn_result_r ? this[isat_var_r](isat_fn_r) : this[right_float_variable]  :right_float_variable ;
+ 
+} catch (error) {
+  
+}
+// var right_float_value_format=right_float_test ? this[right_float_variable]  :right_float_variable ;
+// 
+// console.log("result"+result);
 
+//    expression_one=this[RegExp.$1];  
+
+// console.log(RegExp.$1);
+//    expression_two=eval(RegExp.$3);
+//    expression_two=this[RegExp.$3];
+//    console.log(expression_two);
 console.log("nont"+operators);
     output = _calculate(left_float_value_format,operators,right_float_value_format);
     if (isNaN(output) || !isFinite(output)) 
