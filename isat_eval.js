@@ -92,7 +92,7 @@ if (isat_security.indexOf(typeof value) > -1) {
 
   return  value;
 } else {
-    return typeof value;
+    return "undefined";
 }
 
 }else{
