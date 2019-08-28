@@ -1,8 +1,8 @@
 export function isat_eval(input) {
 
+      var isat_security=["number","string"];
      var pass1=10;
-     var pass3={value:3};
-
+    
 var f = {
   add: '+',
   sub: '-',
