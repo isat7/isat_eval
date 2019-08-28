@@ -210,6 +210,3 @@ function _calculate(a, op, b) {
 
 
 }
-    </script>
-</body>
-</html>
