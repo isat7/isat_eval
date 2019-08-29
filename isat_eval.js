@@ -58,7 +58,7 @@ var output;
 //   (\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+
       //function name support underscope
 // (\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)
-var patt = /(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)/;//it match any string  return true
+var patt = /(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\+\-\/\%\^\*])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)/;//it match any string  return true
 var isvaluemultiple = patt.test(input);
 
 if(!isvaluemultiple){
