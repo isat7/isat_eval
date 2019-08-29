@@ -54,8 +54,11 @@ var output;
 //this regex for variable and integer and return function
 // regex:(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)
 // var single_or_multiple_value_regex=\\g;
-
-var patt = /(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)/;//it match any string  return true
+ //function name does not support underscope   
+//   (\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+
+      //function name support underscope
+// (\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)
+var patt = /(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\+\-\/\%\^])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)/;//it match any string  return true
 var isvaluemultiple = patt.test(input);
 
 if(!isvaluemultiple){
@@ -69,7 +72,12 @@ var patt = /[^\d\+\-\/\%\^\*\.]/;//it match any string  return true
 var left_float_test = patt.test(input);
 console.log("single file"+left_float_test);
 //now we are going to check ====> this[] or this[]()
-var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+      //function deos not support underscope
+// var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+      //function support underscope
+      
+var var_or_fn_patt=/([a-zA-Z0-9_]+)\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+      
 var var_fn_result=var_or_fn_patt.test(input);
 var match_var_fn=input.match(var_or_fn_patt);
 // function name
@@ -106,7 +114,7 @@ for (var i = 0, n = f.ooo.length; i < n; i++) {
 
     // new rule added variable and function and number    
     // var re = new RegExp('(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\\' + f.ooo[i].join('\\') + '])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)');
-    var re = new RegExp('(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)([\\' + f.ooo[i].join('\\') + '])(\\d+\\.?\\d*|[a-zA-Z0-9\()]+)');
+    var re = new RegExp('(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)([\\' + f.ooo[i].join('\\') + '])(\\d+\\.?\\d*|[a-zA-Z0-9\()\'"_]+)');
  
   // Regular Expression to look for operators between floating numbers or integers
 //   var re = new RegExp('(\[a-zA-Z0-9]+|\[0-9]+\\.?\\d*)([\\'+ f.ooo[i].join('\\') + '])(\[a-zA-Z0-9]+|\[0-9]+\\.?\\d*)');
@@ -130,8 +138,10 @@ var left_float_test = patt.test(left_float_variable);
 console.log(left_float_test);
 
 //now we are going to check ====> this[] or this[]()
-
-var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+//function name does not support underscope
+// var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+ //function name support underscope       
+var var_or_fn_patt=/([a-zA-Z0-9_]+)\s*(\((\'|\")?\w*(\'|\")?\))+/g;
 var var_fn_result_l=var_or_fn_patt.test(left_float_variable);
 var match_var_fn=left_float_variable.match(var_or_fn_patt);
 // function name
@@ -165,7 +175,10 @@ var right_float_test = patt.test(right_float_variable);
 
 
 //now we are going to check ====> this[] or this[]()
-var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+        //function deos not support underscope
+// var var_or_fn_patt=/([a-zA-Z0-9]+)+\s*(\((\'|\")?\w*(\'|\")?\))+/g;
+        //functin name support underscope
+var var_or_fn_patt=/([a-zA-Z0-9_]+)\s*(\((\'|\")?\w*(\'|\")?\))+/g;
 var var_fn_result_r=var_or_fn_patt.test(right_float_variable);
 console.log("isat_debug_r-/w"+var_fn_result_r);
 var match_var_fn=right_float_variable.match(var_or_fn_patt);
