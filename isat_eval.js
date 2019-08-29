@@ -28,7 +28,7 @@ f.ooo = [
 
 
 
-input = input.replace(/[^a-zA-Z0-9%^*\/()\-+.\"\']/g, ''); // clean up unnecessary characters
+input = input.replace(/[^a-zA-Z0-9%^*\/()\-+.]/g, ''); // clean up unnecessary characters
 console.log("input"+input);
 
 //keyword avoid
